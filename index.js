@@ -9,9 +9,11 @@ const { buildSchema } = require('graphql');
 const { courses } = require('./data.json');
 
 // id: Int! = el signo de admiracion es para definir que el parametro es requerido
+// para obtener una coleccion de mas de un registro se usa el signo de Array [] para decirle al query que obtenga un listado
 const schema = buildSchema(`
     type Query {
-        course(id: Int!)
+        course(id: Int!): Course
+        courses(topic: String): [Course]
     }
 
     type Course {
@@ -23,8 +25,29 @@ const schema = buildSchema(`
         url: String
     }
 `);
+
+const getCourse = (id) => {
+    return courses.filter(course => {
+        return course.id == id;
+    })[0];
+    //[0] es para darle que devuelva un unico registro del arreglo que devuelve el filter
+}
+
+const getCourses = (args) => {
+    if(args.topic) {
+        let topic = args.topic;
+        return courses.filter(course => {
+            return course.id == topic;
+        })
+    } else {
+        return courses;
+    }
+}
+
+//aqui se definen las funciones
 const root = {
-    message: () => 'Hello World testing'
+    course: getCourse,
+    course: getCourses,
 }
 
 // integracion de los modulos de graphql y express-graphql
