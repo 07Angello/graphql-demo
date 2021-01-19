@@ -1,0 +1,48 @@
+# Welcome to GraphiQL
+
+query getSingleCourse($courseID: Int!) {
+	course(id: $courseID) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+
+query getCourses($courseTopic: String!) {
+  courses(topic: $courseTopic) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+
+query getCoursesWithFragments($courseID1: Int!,$courseID2: Int!) {
+  course1: course(id: $courseID1) {
+    ...courseFields
+  }
+  course2: course(id: $courseID2) {
+    ...courseFields
+  }
+}
+
+fragment courseFields on Course {
+    title
+    author
+    description
+    topic
+    url
+}
+
+
+
+Query Variables
+{
+  "courseID": 1,
+  "courseTopic": "JavaScript",
+  "courseID1": 1,
+  "courseID2": 3
+}

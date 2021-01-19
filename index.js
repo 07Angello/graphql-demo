@@ -31,7 +31,6 @@ const getCourse = (course) => {
     let returnedCourse = courses.filter(course => {
         return course.id == courseId;
     })[0];
-    console.log(returnedCourse);
     //[0] es para darle que devuelva un unico registro del arreglo que devuelve el filter
 
     return returnedCourse;
@@ -41,7 +40,7 @@ const getCourses = (args) => {
     if(args.topic) {
         let topic = args.topic;
         return courses.filter(course => {
-            return course.id == topic;
+            return course.topic == topic;
         })
     } else {
         return courses;

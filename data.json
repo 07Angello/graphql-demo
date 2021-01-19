@@ -11,7 +11,7 @@
             "id": 2,
             "title": "Graphql course",
             "author": "John Carter",
-            "topic": "Moddleware",
+            "topic": "Middleware",
             "url": "http://faztweb.com"
         },
         {
@@ -19,6 +19,20 @@
             "title": "Javascript course",
             "author": "John Carter",
             "topic": "JavaScript",
+            "url": "http://faztweb.com"
+        },
+        {
+            "id": 4,
+            "title": "React course",
+            "author": "John Carter",
+            "topic": "JavaScript",
+            "url": "http://faztweb.com"
+        },
+        {
+            "id": 5,
+            "title": "Python course",
+            "author": "John Carter",
+            "topic": "Python",
             "url": "http://faztweb.com"
         }
     ]
