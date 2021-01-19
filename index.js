@@ -15,6 +15,9 @@ const schema = buildSchema(`
         course(id: Int!): Course
         courses(topic: String): [Course]
     }
+    type Mutation {
+        updateCourseTopic(id: Int!, topic: String!): Course
+    }
 
     type Course {
         id: Int
@@ -47,10 +50,22 @@ const getCourses = (args) => {
     }
 }
 
+const updateCourseTopic = ({id, topic}) => {
+    courses.map(course => {
+        if (course.id === id) {
+            course.topic = topic;
+            return course;
+        }
+    });
+
+    return courses.filter(course => course.id === id)[0];
+}
+
 //aqui se definen las funciones
 const root = {
     course: getCourse,
     courses: getCourses,
+    updateCourseTopic: updateCourseTopic
 }
 
 // integracion de los modulos de graphql y express-graphql

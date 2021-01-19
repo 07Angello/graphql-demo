@@ -1,5 +1,7 @@
 # Welcome to GraphiQL
 
+# Welcome to GraphiQL
+
 query getSingleCourse($courseID: Int!) {
 	course(id: $courseID) {
     title
@@ -37,12 +39,19 @@ fragment courseFields on Course {
     url
 }
 
+mutation updateCourseTopic($id: Int!, $topic: String!) {
+  updateCourseTopic(id: $id, topic: $topic) {
+  	...courseFields
+  }
+}
 
 
-Query Variables
+# Query Variables
 {
   "courseID": 1,
   "courseTopic": "JavaScript",
   "courseID1": 1,
-  "courseID2": 3
+  "courseID2": 3,
+  "id": 1,
+  "topic": "New Topic"
 }
