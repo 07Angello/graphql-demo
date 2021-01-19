@@ -26,11 +26,15 @@ const schema = buildSchema(`
     }
 `);
 
-const getCourse = (id) => {
-    return courses.filter(course => {
-        return course.id == id;
+const getCourse = (course) => {
+    let courseId = course.id
+    let returnedCourse = courses.filter(course => {
+        return course.id == courseId;
     })[0];
+    console.log(returnedCourse);
     //[0] es para darle que devuelva un unico registro del arreglo que devuelve el filter
+
+    return returnedCourse;
 }
 
 const getCourses = (args) => {
@@ -47,7 +51,7 @@ const getCourses = (args) => {
 //aqui se definen las funciones
 const root = {
     course: getCourse,
-    course: getCourses,
+    courses: getCourses,
 }
 
 // integracion de los modulos de graphql y express-graphql
